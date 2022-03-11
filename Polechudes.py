@@ -7,7 +7,7 @@ len_vibr_sl = len(vibr_sl)
 for i in range(len_vibr_sl):
     print('*', end=(''))
 popit = 1
-zero
+zero_index = 0
 index = 0
 ugad_sl = ''
 chislo_popit = int(input('Введите число попыток.'))
@@ -16,17 +16,17 @@ for i in range(chislo_popit):
     if len(vvod) == 1 and ord(vvod) > (ord('а') - 1) and ord(vvod) < (ord('я') + 1):
         if vvod in vibr_sl:
             for s in range(len_vibr_sl):
-                if x > len_vibr_sl or x == len_vibr_sl:
-                    x = len_vibr_sl -1
+                if zero_index > len_vibr_sl or zero_index == len_vibr_sl:
+                    zero_index = len_vibr_sl -1
                 else:
                     if vvod == vibr_sl[x]:
                         tek_sim = vibr_sl[x]
                     else:
                         tek_sim = '*'
                     ugad_sl += tek_sim
-                    x += 1
+                    zero_index += 1
             print(ugad_sl, end=('\n'))
-            x = 0
+            zero_index = 0
             if ugad_sl == vibr_sl:
                 print('Ура вы победили! Вам пондобилось', popit, 'попыток.')
                 break
