@@ -2,52 +2,52 @@ print('Здравствуйте, вы долны вводить по одной 
 sl = {'кот', 'котенок', 'лошадь', 'собака', 'осел', 'мышь'}
 napom = 'Напоминаем вам нужно ввести одну маленькую букву русского алфавита, которую вы еще не вводили е = ё. Или угадать слово. Введите #сдаться чтобы сдаться. И #help чтобы узнать правила и команды.'
 zanovo = 'Попрубуйте ввести заново.'
-b = sl.pop()
-a = len(b)
-for i in range(a):
+vibr_sl = sl.pop()
+len_vibr_sl = len(vibr_sl)
+for i in range(len_vibr_sl):
     print('*', end=(''))
-h = 1
-x = 0
-e = ''
-d = 0
-v = int(input('Введите число попыток.'))
-for i in range(v):
-    o1 = input()
-    if len(o1) == 1 and ord(o1) > (ord('а') - 1) and ord(o1) < (ord('я') + 1):
-        if o1 in b:
-            for s in range(a):
-                if x > a or x == a:
-                    x = a -1
+popit = 1
+zero
+index = 0
+ugad_sl = ''
+chislo_popit = int(input('Введите число попыток.'))
+for i in range(chislo_popit):
+    vvod = input()
+    if len(vvod) == 1 and ord(vvod) > (ord('а') - 1) and ord(vvod) < (ord('я') + 1):
+        if vvod in vibr_sl:
+            for s in range(len_vibr_sl):
+                if x > len_vibr_sl or x == len_vibr_sl:
+                    x = len_vibr_sl -1
                 else:
-                    if o1 == b[x]:
-                        m = b[x]
+                    if vvod == vibr_sl[x]:
+                        tek_sim = vibr_sl[x]
                     else:
-                        m = '*'
-                    e += m
+                        tek_sim = '*'
+                    ugad_sl += tek_sim
                     x += 1
-            print(e, end=('\n'))
+            print(ugad_sl, end=('\n'))
             x = 0
-            if e == b:
-                print('Ура вы победили! Вам пондобилось', h, 'попыток.')
+            if ugad_sl == vibr_sl:
+                print('Ура вы победили! Вам пондобилось', popit, 'попыток.')
                 break
             else:
-                if m != '*':
-                    e += m
+                if tek_sim != '*':
+                    ugad_sl += tek_sim
                 else:
-                    e = ''
-                m = ''
+                    ugad_sl = ''
+                tek_sim = ''
         else:
             print(zanovo , napom)
-    elif len(o1) == len(b) and '#' not in o1:
-        if o1 == b:
-            print('Ура вы победили! Вам понадобилось', h, 'попыток.')
+    elif len(vvod) == len_vibr_sl and '#' not in vvod:
+        if vvod == vibr_sl:
+            print('Ура вы победили! Вам понадобилось', popit, 'попыток.')
         else:
             print(zanovo, napom)
-    elif '#help' in o1:
+    elif '#help' in vvod:
         print(napom)
-    elif '#сдаться' in o1:
+    elif '#сдаться' in vvod:
         print('Увы вы проиграли(((')
         break
     else:
         print(zanovo, napom)
-    h += 1
+    popit += 1
