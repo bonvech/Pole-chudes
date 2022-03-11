@@ -1,53 +1,53 @@
 print('Здравствуйте, вы долны вводить по одной маленькой букве, чтобы отгодать слово. Или угадать слово сразу. Введите #сдаться чтобы сдаться. И #help чтобы узнать правтла и команды.')
-sl = {'кот', 'котенок', 'лошадь', 'собака', 'осел', 'мышь'}
-napom = 'Напоминаем вам нужно ввести одну маленькую букву русского алфавита, которую вы еще не вводили е = ё. Или угадать слово. Введите #сдаться чтобы сдаться. И #help чтобы узнать правила и команды.'
+sl = {'кот', 'котенок', 'лошадь', 'собака', 'осел', 'мышь'}                     # создаю список со словами
+napom = 'Напоминаем вам нужно ввести одну маленькую букву русского алфавита, которую вы еще не вводили е = ё. Или угадать слово. Введите #сдаться чтобы сдаться. И #help чтобы узнать правила и команды.'                   # созаю переменные для сокрашения текста в коде
 zanovo = 'Попрубуйте ввести заново.'
-vibr_sl = sl.pop()
+vibr_sl = sl.pop()                  # выбираю слово
 len_vibr_sl = len(vibr_sl)
 for i in range(len_vibr_sl):
-    print('*', end=(''))
+    print('*', end=(''))                    # выписываю звездочки
 popit = 1
 zero_index = 0
 index = 0
 ugad_sl = ''
-chislo_popit = int(input('Введите число попыток.'))
-for i in range(chislo_popit):
-    vvod = input()
-    if len(vvod) == 1 and ord(vvod) > (ord('а') - 1) and ord(vvod) < (ord('я') + 1):
-        if vvod in vibr_sl:
-            for s in range(len_vibr_sl):
+chislo_popit = int(input('Введите число попыток.'))                     # ввод числа попыток
+for i in range(chislo_popit):                   # вход в основной цикл
+    vvod = input()                  # игрок вводит букву/слово
+    if len(vvod) == 1 and ord(vvod) > (ord('а') - 1) and ord(vvod) < (ord('я') + 1):                    # проверка, на то что введена одна русская буква
+        if vvod in vibr_sl:                     # проверка, на то что буква в слове
+            for s in range(len_vibr_sl):                    # печать слова с отгаданными буквами
                 if zero_index > len_vibr_sl or zero_index == len_vibr_sl:
-                    zero_index = len_vibr_sl -1
+                    zero_index = len_vibr_sl -1                     # ввод числа для индекса в пределы индекса
                 else:
-                    if vvod == vibr_sl[x]:
+                    if vvod == vibr_sl[x]:                  # поиск буквы в слове
                         tek_sim = vibr_sl[x]
                     else:
-                        tek_sim = '*'
-                    ugad_sl += tek_sim
-                    zero_index += 1
-            print(ugad_sl, end=('\n'))
-            zero_index = 0
-            if ugad_sl == vibr_sl:
-                print('Ура вы победили! Вам пондобилось', popit, 'попыток.')
-                break
-            else:
-                if tek_sim != '*':
-                    ugad_sl += tek_sim
-                else:
-                    ugad_sl = ''
-                tek_sim = ''
+                        tek_sim = '*'                   # присваивание тек
+                    ugad_sl += tek_sim                  # собирание слова с угаданными буквами
+                    zero_index += 1                 # увеличение индекса
+            print(ugad_sl, end=('\n'))                  # печать слова с угаданными буквами
+            zero_index = 0                  # обнуление индекса
+            if ugad_sl == vibr_sl:                  # проверка на победу
+                print('Ура вы победили! Вам пондобилось', popit, 'попыток.')                    # сообщение о победе
+                break                   # выход из основного цикла при победе
+            else:                       #
+                if tek_sim != '*':      #
+                    ugad_sl += tek_sim  #
+                else:                   #
+                    ugad_sl = ''        #
+                tek_sim = ''            #
         else:
-            print(zanovo , napom)
-    elif len(vvod) == len_vibr_sl and '#' not in vvod:
-        if vvod == vibr_sl:
-            print('Ура вы победили! Вам понадобилось', popit, 'попыток.')
+            print(zanovo , napom)                   # сообщение о неправильном символе
+    elif len(vvod) == len_vibr_sl and '#' not in vvod:                  # проверка на попытку угадать слово
+        if vvod == vibr_sl:                     # проверка на победу 2
+            print('Ура вы победили! Вам понадобилось', popit, 'попыток.')                   # сообщение о победе
         else:
-            print(zanovo, napom)
-    elif '#help' in vvod:
-        print(napom)
-    elif '#сдаться' in vvod:
-        print('Увы вы проиграли(((')
-        break
+            print(zanovo, napom)                    # сообщение о неправильном слове
+    elif '#help' in vvod:                   # проверка на ввод #help
+        print(napom)                    # оказание помощи при вводе #help
+    elif '#сдаться' in vvod:                    # проверка на ввод #сдаться
+        print('Увы вы проиграли(((')                    # сообщение о поражении
+        break                   # выход из основного цикла при поражении
     else:
-        print(zanovo, napom)
-    popit += 1
+        print(zanovo, napom)                    # сообщение о неправильном символе
+    popit += 1                  # трата попытки
